@@ -1,7 +1,8 @@
 package com.twu28.biblioteca;
 
-import java.util.ArrayList;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -22,5 +23,6 @@ public class MenuTest {
         //Then
         assertThat(options.contains("Reserve"), is(true));
         assertThat(options.size(), is(4));
+
     }
 }
