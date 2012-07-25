@@ -28,11 +28,12 @@ public class ApplicationTest {
     @Test
     public void shouldShowAWelcomeMessageWenApplicationStarts(){
 
-        Application application = new Application();
+        Display display = new FakeTestDisplay();
+        Application application = new Application(display);
 
         application.showWelcomeMessage();
 
-        String firstline = outContent.toString().trim();
+        String firstline = display.getContent().trim();
         assertThat(firstline, is("Welcome to biblioteca!"));
     }
 }

@@ -2,11 +2,17 @@ package com.twu28.biblioteca;
 
 public class Application {
 
+    private Display display;
+
+    public Application(Display display) {
+        this.display = display;
+    }
+
     public static void main(String[] args){
-        new Application().showWelcomeMessage();
+        new Application(new Display()).showWelcomeMessage();
     }
 
     public void showWelcomeMessage() {
-            System.out.println("Welcome to biblioteca!");
+            display.println("Welcome to biblioteca!");
     }
 }
