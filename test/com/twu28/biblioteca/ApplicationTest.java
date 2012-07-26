@@ -14,19 +14,8 @@ public class ApplicationTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-    }
-
-    @After
-    public void cleanUpStreams() {
-        System.setOut(null);
-    }
-
     @Test
-    public void shouldShowAWelcomeMessageWenApplicationStarts(){
+    public void shouldShowAWelcomeMessageWhenApplicationStarts() {
 
         Display display = new FakeTestDisplay();
         Application application = new Application(display);
@@ -36,4 +25,26 @@ public class ApplicationTest {
         String firstline = display.getContent().trim();
         assertThat(firstline, is("Welcome to biblioteca!"));
     }
+
+    @Test
+    public void createMenu() {
+
+        Application application = new Application(new FakeTestDisplay());
+
+        Menu menu = application.createMenu();
+
+        assertThat(menu.listMenuOptions().size(), is(4));
+    }
+
+    @Test
+    public void createCollection() {
+        Application application = new Application(new Display());
+
+        Collection collection = application.createCollection();
+
+        assertThat(collection.listAllBooks().size(), is(3));
+
+    }
+
+
 }
