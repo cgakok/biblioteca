@@ -64,7 +64,7 @@ public class MenuTest {
         //When
         menu.select("reserve", collection, "A Clash of Kings");
         //Then
-        assertThat(display.getContent(), is("Thank You! Enjoy the book."));
+        assertThat(display.getContent(), is("Which book would you like to reserve?\nThank You! Enjoy the book."));
 
     }
 

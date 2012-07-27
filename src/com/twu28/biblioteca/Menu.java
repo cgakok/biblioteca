@@ -7,6 +7,7 @@ public class Menu {
 
     private ArrayList<String> menuOptions;
     private Display display;
+    private boolean quit;
 
     public Menu(ArrayList<String> menuOptions, Display display) {
         this.menuOptions = menuOptions;
@@ -19,25 +20,36 @@ public class Menu {
 
     public void select(String selected, Collection collection, String message) throws IOException {
 
-        if (selected.equals("view"))  {
+        if (selected.equals("view")) {
             ArrayList<String> books = collection.listAllBooks();
             for (String book : books) {
                 display.println(book);
             }
-        } else if(selected.equals("retrieve")) {
+        } else if (selected.equals("retrieve")) {
             display.println("Please talk to Librarian. Thank you.");
 
-        } else if(selected.equals("reserve")) {
+        } else if (selected.equals("reserve")) {
+            display.println("Which book would you like to reserve?");
             String input = display.read(message);
             display.println(collection.makeReservation(input));
-        } else if(selected.equals("quit")) {
+        } else if (selected.equals("quit")) {
+            quit = true;
             display.println("Bye bye!");
-        }
-        else {
+        } else {
             display.println("Select a valid option!!");
         }
 
 
-
     }
+
+    public void cycleThroughMenu(Collection collection) throws IOException {
+
+        while (quit == false) {
+            display.println("Please select from the following options: " + this.listMenuOptions());
+            String input = display.read("");
+            this.select(input, collection, "");
+        }
+    }
+
+
 }

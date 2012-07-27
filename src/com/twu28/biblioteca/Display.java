@@ -1,10 +1,11 @@
 package com.twu28.biblioteca;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Display {
 
-    public void println(String message){
+    public void println(String message) {
         System.out.println(message);
     }
 
@@ -13,6 +14,6 @@ public class Display {
     }
 
     public String read(String input) throws IOException {
-        return System.console().readLine().trim();
+        return new Scanner(System.in).nextLine();
     }
 }

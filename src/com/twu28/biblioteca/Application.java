@@ -1,5 +1,6 @@
 package com.twu28.biblioteca;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Application {
@@ -10,12 +11,15 @@ public class Application {
         this.display = display;
     }
 
-    public static void main(String[] args){
-        new Application(new Display()).showWelcomeMessage();
+    public static void main(String[] args) throws IOException {
+        Application application = new Application(new Display());
+        application.showWelcomeMessage();
+        application.RunMenu();
+
     }
 
     public void showWelcomeMessage() {
-            display.println("Welcome to biblioteca!");
+        display.println("Welcome to biblioteca!");
     }
 
     public Menu createMenu() {
@@ -33,5 +37,10 @@ public class Application {
         books.add("A Clash of Kings");
         books.add("A Storm of Swords");
         return new Collection(books);
+    }
+
+    public void RunMenu() throws IOException {
+        Menu menu = this.createMenu();
+        menu.cycleThroughMenu(this.createCollection());
     }
 }
