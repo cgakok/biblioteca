@@ -28,11 +28,11 @@ public class CollectionTest {
         //Given
         ArrayList<String> books = new ArrayList<String>();
         books.add("A Game of Thrones");
-        books.add("A Clash of Kings.");
-        books.add("A Storm of Swords.");
+        books.add("A Clash of Kings");
+        books.add("A Storm of Swords");
         Collection collection = new Collection(books);
         //When
-        boolean bookInList = collection.checkBookIsInList("A Clash of Kings.");
+        boolean bookInList = collection.checkBookIsInList("A Clash of Kings");
         //Then
         assertThat(bookInList, is(true));
     }
@@ -47,7 +47,7 @@ public class CollectionTest {
         Collection collection = new Collection(books);
         String toBeReserved = "A Clash of Kings.";
         //When
-        String reservation = collection.makeReservation(books, toBeReserved);
+        String reservation = collection.makeReservation(toBeReserved);
         //Then
         assertThat(reservation, is("Thank You! Enjoy the book."));
     }

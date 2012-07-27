@@ -30,8 +30,8 @@ public class Application {
     public Collection createCollection() {
         ArrayList<String> books = new ArrayList<String>();
         books.add("A Game of Thrones");
-        books.add("A Clash of Kings.");
-        books.add("A Storm of Swords.");
+        books.add("A Clash of Kings");
+        books.add("A Storm of Swords");
         return new Collection(books);
     }
 }

@@ -1,5 +1,6 @@
 package com.twu28.biblioteca;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Menu {
@@ -16,7 +17,7 @@ public class Menu {
         return menuOptions;
     }
 
-    public void select(String selected, Collection collection) {
+    public void select(String selected, Collection collection, String message) throws IOException {
 
         if (selected.equals("view"))  {
             ArrayList<String> books = collection.listAllBooks();
@@ -26,6 +27,14 @@ public class Menu {
         } else if(selected.equals("retrieve")) {
             display.println("Please talk to Librarian. Thank you.");
 
+        } else if(selected.equals("reserve")) {
+            String input = display.read(message);
+            display.println(collection.makeReservation(input));
+        } else if(selected.equals("quit")) {
+            display.println("Bye bye!");
+        }
+        else {
+            display.println("Select a valid option!!");
         }
 
 

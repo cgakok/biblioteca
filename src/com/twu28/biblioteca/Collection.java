@@ -19,7 +19,7 @@ public class Collection {
         else return true;
     }
 
-    public String makeReservation(ArrayList<String> books, String toBeReserved) {
+    public String makeReservation(String toBeReserved) {
         if (!books.contains(toBeReserved)) return "Sorry we don't have that book yet.";
         else return "Thank You! Enjoy the book.";
     }

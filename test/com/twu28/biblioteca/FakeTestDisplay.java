@@ -11,6 +11,11 @@ public class FakeTestDisplay extends Display {
 
     @Override
     public String getContent() {
-        return outputBuffer;
+        return outputBuffer.trim();
+    }
+
+    @Override
+    public String read(String input) {
+        return input;
     }
 }
