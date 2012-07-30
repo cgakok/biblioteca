@@ -27,7 +27,7 @@ public class Application {
         options.add("reserve");
         options.add("retrieve");
         options.add("quit");
-        return new Menu(options, display);
+        return new Menu(this.createCollection(), display);
     }
 
     public Collection createCollection() {

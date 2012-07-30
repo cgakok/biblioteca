@@ -23,11 +23,6 @@ public class ApplicationTest {
         assertThat(firstline, is("Welcome to biblioteca!"));
     }
 
-    @Test
-    public void createMenu() {
-        Menu menu = application.createMenu();
-        assertThat(menu.listMenuOptions().size(), is(4));
-    }
 
     @Test
     public void createCollection() {

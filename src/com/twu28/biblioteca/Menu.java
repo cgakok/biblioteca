@@ -4,52 +4,43 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Menu {
-
-    private ArrayList<String> menuOptions;
+    private Collection books;
     private Display display;
     private boolean quit;
 
-    public Menu(ArrayList<String> menuOptions, Display display) {
-        this.menuOptions = menuOptions;
+    public Menu(Collection books, Display display) {
+        this.books = books;
         this.display = display;
     }
 
-    public ArrayList<String> listMenuOptions() {
-        return menuOptions;
-    }
-
-    public void select(String selected, Collection collection) throws IOException {
-
-        if (selected.equals("view")) {
-            ArrayList<String> books = collection.listAllBooks();
-            for (String book : books) {
-                display.println(book);
-            }
-        } else if (selected.equals("retrieve")) {
-            display.println("Please talk to Librarian. Thank you.");
-
-        } else if (selected.equals("reserve")) {
-            display.println("Which book would you like to reserve?");
-            String input = display.read();
-            display.println(collection.makeReservation(input));
-        } else if (selected.equals("quit")) {
-            quit = true;
-            display.println("Bye bye!");
-        } else {
-            display.println("Select a valid option!!");
-        }
-
-
-    }
 
     public void cycleThroughMenu(Collection collection) throws IOException {
-
         while (quit == false) {
-            display.println("Please select from the following options: " + this.listMenuOptions());
+            display.println("Please select from the following options: ");
             String input = display.read();
-            this.select(input, collection);
+//            this.select(input, collection);
         }
     }
 
+    public void reserve() throws IOException {
+        display.println("Which book would you like to reserve?");
+        String input = display.read();
+        display.println(books.makeReservation(input));
+    }
 
+    public void retrieve() {
+        display.println("Please talk to Librarian. Thank you.");
+    }
+
+    public void exit() {
+        quit = true;
+        display.println("Bye bye!");
+    }
+
+    public void viewBooks() {
+        ArrayList<String> booksInLibrary = books.listAllBooks();
+        for (String book : booksInLibrary) {
+            display.println(book);
+        }
+    }
 }
