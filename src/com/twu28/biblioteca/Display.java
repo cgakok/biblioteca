@@ -9,11 +9,8 @@ public class Display {
         System.out.println(message);
     }
 
-    public String getContent() {
-        return "";
-    }
-
-    public String read(String input) throws IOException {
+    public String read() throws IOException {
         return new Scanner(System.in).nextLine();
     }
+
 }

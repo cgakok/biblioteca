@@ -8,7 +8,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class CollectionTest {
-
     @Test
     public void listAllBooksInCollection() {
         //Given
@@ -42,10 +41,10 @@ public class CollectionTest {
         //Given
         ArrayList<String> books = new ArrayList<String>();
         books.add("A Game of Thrones");
-        books.add("A Clash of Kings.");
-        books.add("A Storm of Swords.");
+        books.add("A Clash of Kings");
+        books.add("A Storm of Swords");
         Collection collection = new Collection(books);
-        String toBeReserved = "A Clash of Kings.";
+        String toBeReserved = "A Clash of Kings";
         //When
         String reservation = collection.makeReservation(toBeReserved);
         //Then

@@ -1,5 +1,6 @@
 package com.twu28.biblioteca;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -9,6 +10,18 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class MenuTest {
+    FakeTestDisplay display;
+    Application application;
+    Menu menu;
+    Collection collection;
+
+    @Before
+    public void setUp() throws Exception {
+        display = new FakeTestDisplay();
+        application = new Application(display);
+        menu = application.createMenu();
+        collection = application.createCollection();
+    }
 
     @Test
     public void listMenuOptions() {
@@ -18,7 +31,7 @@ public class MenuTest {
         menuOptions.add("Reserve");
         menuOptions.add("Retrieve");
         menuOptions.add("Quit");
-        Menu menu = new Menu(menuOptions, new FakeTestDisplay());
+        Menu menu = new Menu(menuOptions, display);
         //When
         ArrayList<String> options = menu.listMenuOptions();
         //Then
@@ -29,40 +42,26 @@ public class MenuTest {
 
     @Test
     public void whenUserSelectsViewSelectAllBooks() throws IOException {
-        //Given
-        Display display = new FakeTestDisplay();
-        Application application = new Application(display);
-        Menu menu = application.createMenu();
-        Collection collection = application.createCollection();
         //When
-        menu.select("view", collection, "");
-        //
+        menu.select("view", collection);
+        //Then
         assertThat(display.getContent(), is("A Game of Thrones\nA Clash of Kings\nA Storm of Swords"));
 
     }
 
     @Test
     public void whenUserSelectsRetrieveSeeLibraryNumber() throws IOException {
-        //Given
-        Display display = new FakeTestDisplay();
-        Application application = new Application(display);
-        Menu menu = application.createMenu();
-        Collection collection = application.createCollection();
         //When
-        menu.select("retrieve", collection, "");
+        menu.select("retrieve", collection);
         //Then
         assertThat(display.getContent(), is("Please talk to Librarian. Thank you."));
     }
 
     @Test
     public void whenUserSelectsReserveAndBooksInCollectionReserve() throws IOException {
-        //Given
-        Display display = new FakeTestDisplay();
-        Application application = new Application(display);
-        Menu menu = application.createMenu();
-        Collection collection = application.createCollection();
         //When
-        menu.select("reserve", collection, "A Clash of Kings");
+        display.setInput("A Clash of Kings");
+        menu.select("reserve", collection);
         //Then
         assertThat(display.getContent(), is("Which book would you like to reserve?\nThank You! Enjoy the book."));
 
@@ -70,26 +69,16 @@ public class MenuTest {
 
     @Test
     public void checkThatInvalidOptionReturnsMessage() throws IOException {
-        //Given
-        Display display = new FakeTestDisplay();
-        Application application = new Application(display);
-        Menu menu = application.createMenu();
-        Collection collection = application.createCollection();
         //When
-        menu.select("thisIsNotAValidOption", collection, "");
+        menu.select("thisIsNotAValidOption", collection);
         //Then
         assertThat(display.getContent(), is("Select a valid option!!"));
     }
 
     @Test
     public void checkThatSelectingQuitDisplaysAMessage() throws IOException {
-        //Given
-        Display display = new FakeTestDisplay();
-        Application application = new Application(display);
-        Menu menu = application.createMenu();
-        Collection collection = application.createCollection();
         //When
-        menu.select("quit", collection, "");
+        menu.select("quit", collection);
         //Then
         assertThat(display.getContent(), is("Bye bye!"));
 

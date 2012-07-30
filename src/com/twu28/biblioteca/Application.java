@@ -15,7 +15,6 @@ public class Application {
         Application application = new Application(new Display());
         application.showWelcomeMessage();
         application.RunMenu();
-
     }
 
     public void showWelcomeMessage() {
@@ -43,4 +42,5 @@ public class Application {
         Menu menu = this.createMenu();
         menu.cycleThroughMenu(this.createCollection());
     }
+
 }

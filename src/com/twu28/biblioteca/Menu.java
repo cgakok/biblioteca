@@ -18,7 +18,7 @@ public class Menu {
         return menuOptions;
     }
 
-    public void select(String selected, Collection collection, String message) throws IOException {
+    public void select(String selected, Collection collection) throws IOException {
 
         if (selected.equals("view")) {
             ArrayList<String> books = collection.listAllBooks();
@@ -30,7 +30,7 @@ public class Menu {
 
         } else if (selected.equals("reserve")) {
             display.println("Which book would you like to reserve?");
-            String input = display.read(message);
+            String input = display.read();
             display.println(collection.makeReservation(input));
         } else if (selected.equals("quit")) {
             quit = true;
@@ -46,8 +46,8 @@ public class Menu {
 
         while (quit == false) {
             display.println("Please select from the following options: " + this.listMenuOptions());
-            String input = display.read("");
-            this.select(input, collection, "");
+            String input = display.read();
+            this.select(input, collection);
         }
     }
 
