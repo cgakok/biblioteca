@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -13,16 +12,15 @@ public class MenuTest {
     FakeTestDisplay display;
     Application application;
     Menu menu;
-    Collection collection;
+    BookCollection bookCollection;
 
     @Before
     public void setUp() throws Exception {
         display = new FakeTestDisplay();
         application = new Application(display);
-        collection = application.createCollection();
+        bookCollection = application.createCollection();
         menu = application.createMenu();
     }
-
 
     @Test
     public void whenUserSelectsViewSelectAllBooks() throws IOException {
@@ -51,13 +49,13 @@ public class MenuTest {
 
     }
 
-
     @Test
-    public void checkThatSelectingQuitDisplaysAMessage() throws IOException {
-        //When
+    public void checkThatQuitHasBeenSwitchedOn() {
+        //Given
         menu.exit();
+        //When
+        boolean quit = menu.quitCommandEntered();
         //Then
-        assertThat(display.getContent(), is("Bye bye!"));
-
+        assertThat(quit, is(true));
     }
 }

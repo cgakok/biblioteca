@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class CollectionTest {
+public class BookCollectionTest {
     @Test
     public void listAllBooksInCollection() {
         //Given
@@ -15,9 +15,9 @@ public class CollectionTest {
         books.add("A Game of Thrones");
         books.add("A Clash of Kings.");
         books.add("A Storm of Swords.");
-        Collection collection = new Collection(books);
+        BookCollection bookCollection = new BookCollection(books);
         //When
-        ArrayList<String> booksInCollection = collection.listAllBooks();
+        ArrayList<String> booksInCollection = bookCollection.listAllBooks();
         //Then
         assertThat(booksInCollection.size(), is(3));
     }
@@ -29,9 +29,9 @@ public class CollectionTest {
         books.add("A Game of Thrones");
         books.add("A Clash of Kings");
         books.add("A Storm of Swords");
-        Collection collection = new Collection(books);
+        BookCollection bookCollection = new BookCollection(books);
         //When
-        boolean bookInList = collection.checkBookIsInList("A Clash of Kings");
+        boolean bookInList = bookCollection.checkBookIsInList("A Clash of Kings");
         //Then
         assertThat(bookInList, is(true));
     }
@@ -43,10 +43,10 @@ public class CollectionTest {
         books.add("A Game of Thrones");
         books.add("A Clash of Kings");
         books.add("A Storm of Swords");
-        Collection collection = new Collection(books);
+        BookCollection bookCollection = new BookCollection(books);
         String toBeReserved = "A Clash of Kings";
         //When
-        String reservation = collection.makeReservation(toBeReserved);
+        String reservation = bookCollection.makeReservation(toBeReserved);
         //Then
         assertThat(reservation, is("Thank You! Enjoy the book."));
     }

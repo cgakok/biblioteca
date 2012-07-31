@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Display {
-
     public void println(String message) {
         System.out.println(message);
     }

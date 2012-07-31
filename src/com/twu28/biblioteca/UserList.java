@@ -3,7 +3,6 @@ package com.twu28.biblioteca;
 import java.util.HashMap;
 
 public class UserList {
-
     private HashMap<String, String> userList;
 
     public UserList() {
@@ -31,7 +30,6 @@ public class UserList {
     public Integer size() {
         return userList.size();
     }
-
 
     public boolean checkUserName(String username, String password) {
         if (!userList.containsKey(username)) return false;

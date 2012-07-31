@@ -11,6 +11,6 @@ public class Reserve implements MenuOption {
 
     @Override
     public void execute() throws IOException {
-       menu.reserve();
+        menu.reserve();
     }
 }

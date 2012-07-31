@@ -4,22 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Menu {
-    private Collection books;
+    private BookCollection books;
     private Display display;
     private boolean quit;
 
-    public Menu(Collection books, Display display) {
+    public Menu(BookCollection books, Display display) {
         this.books = books;
         this.display = display;
-    }
-
-
-    public void cycleThroughMenu(Collection collection) throws IOException {
-        while (quit == false) {
-            display.println("Please select from the following options: ");
-            String input = display.read();
-//            this.select(input, collection);
-        }
     }
 
     public void reserve() throws IOException {
@@ -34,7 +25,6 @@ public class Menu {
 
     public void exit() {
         quit = true;
-        display.println("Bye bye!");
     }
 
     public void viewBooks() {
@@ -42,5 +32,9 @@ public class Menu {
         for (String book : booksInLibrary) {
             display.println(book);
         }
+    }
+
+    public boolean quitCommandEntered() {
+        return quit;
     }
 }

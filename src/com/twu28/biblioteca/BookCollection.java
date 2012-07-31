@@ -2,11 +2,10 @@ package com.twu28.biblioteca;
 
 import java.util.ArrayList;
 
-public class Collection {
-
+public class BookCollection {
     private ArrayList<String> books;
 
-    public Collection(ArrayList<String> books) {
+    public BookCollection(ArrayList<String> books) {
         this.books = books;
     }
 
